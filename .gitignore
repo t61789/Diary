@@ -1,3 +1,13 @@
 
 obj/
 bin/
+obj/Release/Diary.pdb
+obj/Release/Diary.exe
+bin/Debug/data.xml
+bin/Debug/Diary.exe
+bin/Debug/Diary.pdb
+bin/Release/Diary.pdb
+obj/Debug/Diary.exe
+bin/Release/Diary.pdb
+obj/Debug/Diary.pdb
+obj/Release/Diary.pdb

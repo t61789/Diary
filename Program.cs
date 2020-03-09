@@ -261,7 +261,7 @@ namespace Diary
         public void OpenFile(string path)
         {
             Process p = new Process();
-            p.StartInfo.FileName = "E:\\Programs\\Vim\\vim82\\gvim.exe";
+            p.StartInfo.FileName = "E:\\Programs\\Vim\\vim82\\vim.exe";
             p.StartInfo.UseShellExecute = false;
             p.StartInfo.CreateNoWindow = false;
             p.StartInfo.Arguments = path;
