@@ -31,30 +31,33 @@ namespace Diary
 
         private void MainInterface()
         {
-            Console.Clear();
-            Console.WriteLine("*******************");
-            Console.WriteLine("*                 *");
-            Console.WriteLine("*    Diary v1.0   *");
-            Console.WriteLine("*                 *");
-            Console.WriteLine("*******************");
-            Console.WriteLine();
-            Console.WriteLine("1.写今日份的日记");
-            Console.WriteLine("2.浏览过往日记");
-            Console.WriteLine("任意键退出");
-
-            Console.WriteLine();
-            Console.Write("输入：");
-            ConsoleKeyInfo c = Console.ReadKey();
-            switch (c.Key)
+            while (true)
             {
-                case ConsoleKey.D1:
-                    WriteTodaysDiary();
-                    dataDoc.Save(dataPath);
-                    return;
-                case ConsoleKey.D2:
-                    ReadDiary();
-                    break;
-                default:return;
+                Console.Clear();
+                Console.WriteLine("*******************");
+                Console.WriteLine("*                 *");
+                Console.WriteLine("*    Diary v1.0   *");
+                Console.WriteLine("*                 *");
+                Console.WriteLine("*******************");
+                Console.WriteLine();
+                Console.WriteLine("1.写今日份的日记");
+                Console.WriteLine("2.浏览过往日记");
+                Console.WriteLine("任意键退出");
+
+                Console.WriteLine();
+                Console.Write("输入：");
+                ConsoleKeyInfo c = Console.ReadKey();
+                switch (c.Key)
+                {
+                    case ConsoleKey.D1:
+                        WriteTodaysDiary();
+                        dataDoc.Save(dataPath);
+                        break;
+                    case ConsoleKey.D2:
+                        ReadDiary();
+                        break;
+                    default: return;
+                }
             }
         }
 
@@ -74,8 +77,27 @@ namespace Diary
 
             string unsavedDiaryPath = dataDoc.Root.Element("config").Element("unsaved-diary").Value;
             if (File.Exists(unsavedDiaryPath))
+                File.Delete(unsavedDiaryPath);
+        }
+
+        public void WriteTodaysDiary()
+        {
+            //string newFilePath = Environment.CurrentDirectory + "\\diary-" + DateTime.Now.ToString("yyyy_MM_dd-HH_mm") + ".txt";
+
+            string newFileId = Guid.NewGuid().ToString("N");
+            string date = DateTime.Now.ToString("yyyy_MM_dd");
+            string time = DateTime.Now.ToString("HH_mm");
+
+            string newFilePath = Environment.CurrentDirectory + "\\" + newFileId + ".txt";
+
+            dataDoc.Root.Element("config").Element("unsaved-diary").Value = newFilePath;
+            dataDoc.Save(dataPath);
+
+            OpenFile(newFilePath);
+
+            if (File.Exists(newFilePath))
             {
-                StreamReader reader = new StreamReader(unsavedDiaryPath, Encoding.UTF8);
+                StreamReader reader = new StreamReader(newFilePath, Encoding.UTF8);
                 StringBuilder builder = new StringBuilder();
                 string temp;
                 while ((temp = reader.ReadLine()) != null)
@@ -86,27 +108,16 @@ namespace Diary
                 reader.Close();
 
                 XElement element;
-                if((element = dataDoc.Root.Element("diaries").Element(Path.GetFileNameWithoutExtension(unsavedDiaryPath)))==null)
-                {
-                    element = new XElement(Path.GetFileNameWithoutExtension(unsavedDiaryPath));
-                    element.Value = builder.ToString();
-                    dataDoc.Root.Element("diaries").Add(element);
-                }
-                else
-                    element.Value = builder.ToString();
+                element = new XElement(newFileId);
+                element.SetAttributeValue("date",date);
+                element.SetAttributeValue("time", time);
+
+                element.Value = builder.ToString();
+                dataDoc.Root.Element("diaries").Add(element);
                 dataDoc.Save(dataPath);
 
-                File.Delete(unsavedDiaryPath);
+                File.Delete(newFilePath);
             }
-        }
-
-        public void WriteTodaysDiary()
-        {
-            string newFilePath = Environment.CurrentDirectory + "\\diary-" + DateTime.Now.ToString("yyyy_MM_dd-HH_mm") + ".txt";
-
-            dataDoc.Root.Element("config").Element("unsaved-diary").Value = newFilePath;
-
-            OpenFile(newFilePath);
         }
 
         private void ReadDiary()

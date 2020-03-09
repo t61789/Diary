@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <config>
-    <unsaved-diary>E:\Programming\C_C++_C#\Diary\Diary\bin\Debug\2019_08_05-17_03.txt</unsaved-diary>
+    <unsaved-diary>E:\Programming\C_C++_C#\Diary\Diary\bin\Debug\b54e450ddca94ac2ba2804651fce8923.txt</unsaved-diary>
   </config>
   <diaries>
     <diary-2019_08_04-20_41>fuck</diary-2019_08_04-20_41>
@@ -18,5 +18,7 @@ you
     <diary-2019_08_05-17_03>	我了个大草
 	马勒戈壁
 </diary-2019_08_05-17_03>
+    <b54e450ddca94ac2ba2804651fce8923 date="2020_03_09" time="14_24">just for test
+</b54e450ddca94ac2ba2804651fce8923>
   </diaries>
 </root>
