@@ -1,24 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <config>
-    <unsaved-diary>E:\Programming\C_C++_C#\Diary\Diary\bin\Debug\b54e450ddca94ac2ba2804651fce8923.txt</unsaved-diary>
+    <unsaved-diary>E:\Programming\C_C++_C#\Diary\Diary\bin\Debug\Dfdd6992296c445a5ba8758c0aa5ef50f.txt</unsaved-diary>
   </config>
   <diaries>
-    <diary-2019_08_04-20_41>fuck</diary-2019_08_04-20_41>
-    <diary-2019_08_04-20_42>fuckyou</diary-2019_08_04-20_42>
-    <diary-2019_08_04-20_42>fuck
+    <Dbd0fde245345469885f84364975ee73f data="2019_08_04" time="20_41">fuck</Dbd0fde245345469885f84364975ee73f>
+    <Dcd74eeb3308343049e29e39e99fd22e0 data="2019_08_04" time="20_42">fuckyou</Dcd74eeb3308343049e29e39e99fd22e0>
+    <Dd28c096d69644c73b2a60129ba965247 data="2019_08_04" time="20_42">fuck
 you
-</diary-2019_08_04-20_42>
-    <diary-2019_08_04-20_59>绌烘兂妫灄鐨勮瘎璁洪噷鍙戠幇浜嗕技涔庢槸鍦ㄨ吹闃抽偅闂存埧瀛愭ゼ涓婄殑浜哄彂鐨勮瘎璁猴紝璇村枩娆㈡垜鐨勫０闊筹紝铏界劧涓嶇‘瀹氭槸涓嶆槸鎴戯紝浣嗘妸鎻″緢澶э紝寮€蹇冦€
-</diary-2019_08_04-20_59>
-    <diary-2019_08_05-16_13>浠婂ぉ闃块瀹岀粨浜嗭紝鏋簡
-</diary-2019_08_05-16_13>
-    <diary-2019_08_05-16_40>卧槽
-</diary-2019_08_05-16_40>
-    <diary-2019_08_05-17_03>	我了个大草
+</Dd28c096d69644c73b2a60129ba965247>
+    <D650aed3e581d472781bf3546c2211cbd data="2019_08_04" time="20_59">绌烘兂妫灄鐨勮瘎璁洪噷鍙戠幇浜嗕技涔庢槸鍦ㄨ吹闃抽偅闂存埧瀛愭ゼ涓婄殑浜哄彂鐨勮瘎璁猴紝璇村枩娆㈡垜鐨勫０闊筹紝铏界劧涓嶇‘瀹氭槸涓嶆槸鎴戯紝浣嗘妸鎻″緢澶э紝寮€蹇冦€
+</D650aed3e581d472781bf3546c2211cbd>
+    <De2e1bc06719d46d1a797d9dc37c5a64f data="2019_08_05" time="16_13">浠婂ぉ闃块瀹岀粨浜嗭紝鏋簡
+</De2e1bc06719d46d1a797d9dc37c5a64f>
+    <D04f2138f1e74439fbaf7dd2f50d0ff21 data="2019_08_05" time="16_40">卧槽
+</D04f2138f1e74439fbaf7dd2f50d0ff21>
+    <D631b81267713415eba33dd4609d14a76 data="2019_08_05" time="17_03">	我了个大草
 	马勒戈壁
-</diary-2019_08_05-17_03>
-    <b54e450ddca94ac2ba2804651fce8923 date="2020_03_09" time="14_24">just for test
-</b54e450ddca94ac2ba2804651fce8923>
+</D631b81267713415eba33dd4609d14a76>
+    <D174d7c73f1d54dc382157347645df336 date="2020_03_09" time="651fce8923" data="dca94ac2ba280">just for test
+</D174d7c73f1d54dc382157347645df336>
   </diaries>
 </root>

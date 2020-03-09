@@ -56,6 +56,9 @@ namespace Diary
                     case ConsoleKey.D2:
                         ReadDiary();
                         break;
+                    case ConsoleKey.D3:
+                        Test();
+                        break;
                     default: return;
                 }
             }
@@ -63,7 +66,6 @@ namespace Diary
 
         public void StartCheck()
         {
-
             if (!File.Exists(dataPath))
             {
                 dataDoc = new XDocument();
@@ -72,6 +74,7 @@ namespace Diary
                 dataDoc.Root.Element("config").Add(new XElement("unsaved-diary"));
                 dataDoc.Root.Add(new XElement("diaries"));
                 dataDoc.Save(dataPath);
+
             }
             else dataDoc = XDocument.Load(dataPath);
 
@@ -84,7 +87,7 @@ namespace Diary
         {
             //string newFilePath = Environment.CurrentDirectory + "\\diary-" + DateTime.Now.ToString("yyyy_MM_dd-HH_mm") + ".txt";
 
-            string newFileId = Guid.NewGuid().ToString("N");
+            string newFileId ="D"+ Guid.NewGuid().ToString("N");
             string date = DateTime.Now.ToString("yyyy_MM_dd");
             string time = DateTime.Now.ToString("HH_mm");
 
@@ -137,7 +140,7 @@ namespace Diary
                 int count = 0;
                 foreach (var item in e.Elements())
                 {
-                    Console.WriteLine(count + ". " + item.Name.ToString());
+                    Console.WriteLine(count + ". 日期：" + item.Attribute("date").Value+" 时间： " + item.Attribute("time").Value);
                     count++;
                     list.Add(item.Name.ToString());
                 }
@@ -176,7 +179,7 @@ namespace Diary
                     Console.WriteLine("左右键翻页，c键修改，d键删除，r键返回，q键退出");
                     Console.WriteLine("****************************************");
                     Console.WriteLine();
-                    Console.WriteLine("日期: " + list[result]);
+                    Console.WriteLine("日期: " + e.Element(list[result]).Attribute("date").Value + " 时间: " + e.Element(list[result]).Attribute("time").Value);
                     Console.WriteLine();
                     Console.WriteLine();
 
@@ -238,17 +241,45 @@ namespace Diary
             dataDoc.Save(dataPath);
 
             OpenFile(path);
+
+            StreamReader reader = new StreamReader(path, Encoding.UTF8);
+            StringBuilder builder = new StringBuilder();
+            string temp;
+            while ((temp = reader.ReadLine()) != null)
+            {
+                builder.Append(temp);
+                builder.Append('\n');
+            }
+            reader.Close();
+
+            e.Value = builder.ToString();
+            dataDoc.Save(dataPath);
+
+            File.Delete(path);
         }
-        public static void OpenFile(string path)
+
+        public void OpenFile(string path)
         {
             Process p = new Process();
-            p.StartInfo.FileName = "E:\\Programs\\Vim\\vim82\\vim.exe";
+            p.StartInfo.FileName = "E:\\Programs\\Vim\\vim82\\gvim.exe";
             p.StartInfo.UseShellExecute = false;
             p.StartInfo.CreateNoWindow = false;
             p.StartInfo.Arguments = path;
             p.Start();
             p.WaitForExit();
             p.Close();
+        }
+
+        public void Test()
+        {
+            foreach (var item in dataDoc.Root.Element("diaries").Elements())
+            {
+                string[] datas = item.Name.ToString().Split('-');
+                item.SetAttributeValue("data",datas[1]);
+                item.SetAttributeValue("time", datas[2]);
+                item.Name = "D"+Guid.NewGuid().ToString("N");
+            }
+            dataDoc.Save(dataPath);
         }
     }
 }
