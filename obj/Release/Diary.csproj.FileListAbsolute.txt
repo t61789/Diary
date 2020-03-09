@@ -1,0 +1,7 @@
+E:\Programming\C_C++_C#\Diary\Diary\bin\Release\Diary.exe.config
+E:\Programming\C_C++_C#\Diary\Diary\bin\Release\Diary.exe
+E:\Programming\C_C++_C#\Diary\Diary\bin\Release\Diary.pdb
+E:\Programming\C_C++_C#\Diary\Diary\obj\Release\Diary.csproj.CoreCompileInputs.cache
+E:\Programming\C_C++_C#\Diary\Diary\obj\Release\Diary.exe
+E:\Programming\C_C++_C#\Diary\Diary\obj\Release\Diary.pdb
+E:\Programming\C_C++_C#\Diary\Diary\obj\Release\Diary.csprojAssemblyReference.cache
