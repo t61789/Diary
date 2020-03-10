@@ -11,17 +11,21 @@ namespace Diary
 {
     public class Program
     {
-        public string dataPath = Environment.CurrentDirectory + "\\data.xml";
+        public string dataPath;
+		public string windowsTermianlPath;
+		public string vimPath;
 
         public XDocument dataDoc;
 
         public static void Main(string[] args)
         {
-            new Program().Start();
+            new Program().Start(args);
         }
 
-        public void Start()
+        public void Start(string[] args)
         {
+			dataPath = args[0] + "\\data.xml";
+
             StartCheck();
 
             Console.CursorVisible = false;
@@ -66,20 +70,12 @@ namespace Diary
 
         public void StartCheck()
         {
-            if (!File.Exists(dataPath))
-            {
-                dataDoc = new XDocument();
-                dataDoc.Add(new XElement("root"));
-                dataDoc.Root.Add(new XElement("config"));
-                dataDoc.Root.Element("config").Add(new XElement("unsaved-diary"));
-                dataDoc.Root.Add(new XElement("diaries"));
-                dataDoc.Save(dataPath);
-
-            }
-            else dataDoc = XDocument.Load(dataPath);
+            dataDoc = XDocument.Load(dataPath);
 
             string unsavedDiaryPath = dataDoc.Root.Element("config").Element("unsaved-diary").Value;
-            if (File.Exists(unsavedDiaryPath))
+			windowsTermianlPath = dataDoc.Root.Element("config").Element("windows-terminal-path").Value;
+			vimPath = dataDoc.Root.Element("config").Element("vim-path").Value;
+			if (File.Exists(unsavedDiaryPath))
                 File.Delete(unsavedDiaryPath);
         }
 
@@ -174,7 +170,7 @@ namespace Diary
 
                 while (true)
                 {
-                    Console.Clear();
+					Console.Clear();
                     Console.WriteLine("****************************************");
                     Console.WriteLine("左右键翻页，c键修改，d键删除，r键返回，q键退出");
                     Console.WriteLine("****************************************");
@@ -261,7 +257,7 @@ namespace Diary
         public void OpenFile(string path)
         {
             Process p = new Process();
-            p.StartInfo.FileName = "E:\\Programs\\Vim\\vim82\\vim.exe";
+            p.StartInfo.FileName = vimPath;
             p.StartInfo.UseShellExecute = false;
             p.StartInfo.CreateNoWindow = false;
             p.StartInfo.Arguments = path;
